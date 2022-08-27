@@ -38,7 +38,7 @@ function insertionSort(array) {
             correctIndexOfCurrentUnsortedElementInSortedArray = j
             break
         }
-        for(j = correctIndexOfCurrentUnsortedElementInSortedSubvector ; j < i ; ++j) {
+        for(j = i - 1 ; j >= correctIndexOfCurrentUnsortedElementInSortedSubvector ; --j) {
             array[j + 1] = array[j]
         }
         array[correctIndexOfCurrentUnsortedElementInSortedSubvector] = temp
