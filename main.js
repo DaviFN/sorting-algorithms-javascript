@@ -1,7 +1,7 @@
 function bubbleSort(array) {
-    for(i = array.length ; i >= 0 ; --i) {
-        sortedAlready = true
-        for(j = 0 ; j < i ; ++j) {
+    for(var i = array.length ; i >= 0 ; --i) {
+        var sortedAlready = true
+        for(var j = 0 ; j < i ; ++j) {
             if(array[j] > array[j + 1]) {
                 var temp = array[j + 1]
                 array[j + 1] = array[j]
@@ -15,14 +15,14 @@ function bubbleSort(array) {
 }
 
 function selectionSort(array) {
-    for(i = 0 ; i < array.length ; ++i) {
+    for(var i = 0 ; i < array.length ; ++i) {
         indexOfSmallestItemInUnsortedSubvector = i
-        for(j = i ; j < array.length ; ++j) {
+        for(var j = i ; j < array.length ; ++j) {
             if(array[j] < array[indexOfSmallestItemInUnsortedSubvector]) {
                 indexOfSmallestItemInUnsortedSubvector = j
             }
         }
-        temp = array[indexOfSmallestItemInUnsortedSubvector]
+        var temp = array[indexOfSmallestItemInUnsortedSubvector]
         array[indexOfSmallestItemInUnsortedSubvector] = array[i]
         array[i] = temp
     }
@@ -31,17 +31,18 @@ function selectionSort(array) {
 
 function insertionSort(array) {
     for(i = 1 ; i < array.length ; ++i) {
-        beingInserted = array[i]
-        correctIndexOfCurrentUnsortedElementInSortedSubvector = i
-        for(j = 0 ; j < i ; ++j) {
-            if(array[j + 1] > beingInserted)
-            correctIndexOfCurrentUnsortedElementInSortedArray = j
-            break
+        var beingInserted = array[i]
+        var correctIndexOfCurrentUnsortedElementInSortedSubvector = i
+        for(var j = 0 ; j < i ; ++j) {
+            if(array[j] > beingInserted) {
+                correctIndexOfCurrentUnsortedElementInSortedSubvector = j
+                break
+            }
         }
-        for(j = i - 1 ; j >= correctIndexOfCurrentUnsortedElementInSortedSubvector ; --j) {
+        for(var j = i - 1 ; j > correctIndexOfCurrentUnsortedElementInSortedSubvector ; --j) {
             array[j + 1] = array[j]
         }
-        array[correctIndexOfCurrentUnsortedElementInSortedSubvector] = temp
+        array[correctIndexOfCurrentUnsortedElementInSortedSubvector] = beingInserted
     }
     return array
 }
@@ -51,33 +52,33 @@ function randomlyGenerateArray(arraySize) {
 }
 
 function isSorted(array) {
-    for(i = 0 ; i < array.length - 1; ++i) {
+    for(var i = 0 ; i < array.length - 1; ++i) {
         if(array[i] > array[i + 1]) return false
     }
     return true
 }
 
 function printArray(array) {
-    arrayString = isSorted(array) ? "(sorted)" : "(unsorted)"
+    var arrayString = isSorted(array) ? "(sorted)" : "(unsorted)"
     arrayString += " [ "
     array.forEach(item => arrayString += item + " ")
     arrayString += "]"
     console.log(arrayString)
 }
 
-arraySize = 15
-array = randomlyGenerateArray(arraySize)
+var arraySize = 15
+var array = randomlyGenerateArray(arraySize)
 console.log("original array:")
 printArray(array)
 
-arraySortedWithBubbleSort = bubbleSort(Array.from(array))
+var arraySortedWithBubbleSort = bubbleSort(Array.from(array))
 console.log("sorted with bubble sort:")
 printArray(arraySortedWithBubbleSort)
 
-arraySortedWithSelectionSort = selectionSort(Array.from(array))
+var arraySortedWithSelectionSort = selectionSort(Array.from(array))
 console.log("sorted with selection sort:")
 printArray(arraySortedWithSelectionSort)
 
-arraySortedWithInsertionSort = insertionSort(Array.from(array))
+var arraySortedWithInsertionSort = insertionSort(Array.from(array))
 console.log("sorted with insertion sort:")
 printArray(arraySortedWithInsertionSort)
